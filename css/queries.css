@@ -1,0 +1,53 @@
+/* Dispositivos extra grandes */
+@media (max-width: 1999px) {
+
+}
+
+/* Dispositivos grandes */
+@media (max-width: 991px) {
+    body {
+        background: yellow;
+    }
+
+    .home {
+        grid-template-areas: "hd hd hd hd     hd       hd      hd      hd      hd    hd hd hd"
+                             ".  .  .  .      .        .       .       .       .     .  .  ."
+                             ".  .  .  main   main     main    main    main    main  .  .  ."
+                             ".  .  .  .      .        .       .       .       .     .  .  ."
+    }
+}
+
+/* Dispositivos medianos */
+@media (max-width: 767px) {
+    body {
+        background: blue;
+    }
+}
+
+/* Dispositivos pequeños */
+@media (max-width: 575px) {
+    body {
+        background: pink;
+    }
+
+    .home {
+        grid-template-areas: "hd hd hd    hd     hd       hd      hd      hd      hd    hd    hd hd"
+                             ".  .  .     .      .        .       .       .       .     .     .  ."
+                             ".  .  main  main   main     main    main    main    main  main  .  ."
+                             ".  .  .     .      .        .       .       .       .     .     .  ."
+    }
+}
+
+/* Dipositivos extra pequeños */
+@media (max-width: 400px) {
+    body {
+        background: pink;
+    }
+
+    .home {
+        grid-template-areas: "hd hd    hd    hd     hd       hd      hd      hd      hd    hd    hd     hd"
+                             ".  .     .     .      .        .       .       .       .     .     .      ."
+                             ".  main  main  main   main     main    main    main    main  main  main   ."
+                             ".  .     .     .      .        .       .       .       .     .     .      ."
+    }
+}

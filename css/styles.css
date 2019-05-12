@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Reseteando estilos de bootstrap */
+
+h1, h2, h3, h4, h5, h6, p, ul, span {
+    margin: 0;
+    padding: 0;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
+
+/* ->Reseteando estilos de bootstrap */
+
+/* Estilos generales */
+
+body {
+    font-family: "Roboto";
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.card {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .08), 0 2px 4px 0 rgba(0, 0, 0, .12);
+    border-radius: 3px;
+    background: #fff;
+}
+
+.off {
+    color: #c8c8c8;
+}
+
+.link {
+    color: #1da1f2;
+    font-size: 15px;
+}
+
+.link:hover{
+    color: #1da1f2;
+    text-decoration: underline;
+}
+
+    /* Botones */
+
+    .button-container {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .button-container.left {
+        text-align: left;
+    }
+
+    .button-container.right {
+        text-align: right;
+    }
+
+    .button-container button {
+        border: none;
+        outline: none;
+        background: #ff4444;
+        color: #fff;
+        transition: 0.3s all ease;
+        -webkit-transition: 0.3s all ease;
+        -moz-transition: 0.3s all ease;
+        -ms-transition: 0.3s all ease;
+        -o-transition: 0.3s all ease;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+    }
+
+    .button-container button.button-1 {
+        font-size: 15px;
+        padding: 8px 45px;
+    }
+
+    .button-container button.button-2 {
+        font-size: 13px;
+        padding: 5px 18px;
+        color: #fff;
+    }
+
+    .button-container button.button-1:hover {
+        background: #ff5757;
+    }
+
+    .button-container button.button-1:active {
+        background: #fd4747;
+    }
+
+    /* ->Botones */
+
+    /* Inputs personalizados */
+
+    .input-alternative {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 23px;
+    }
+
+        /* OneLine y MultiLine */
+
+        .input-alternative .input-container,
+        .input-alternative.multi-line .text-area-container {
+            display: block;
+            position: relative;
+        }
+
+        .input-alternative .input-container input,
+        .input-alternative.multi-line .text-area-container .text-area {
+            display: inline-block;
+            padding: 5px;
+            width: 100%;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid #ccc;
+        }
+
+    
+        .input-alternative .input-container label,
+        .input-alternative.multi-line .text-area-container .text-area-placeholder {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            color: #ccc;
+            font-size: 15px;
+            cursor: text;
+            -webkit-transition: all 0.1s ease;
+            -o-transition: all 0.1s ease;
+            transition: all 0.1s ease;
+        }
+
+        .input-alternative .input-container label.active,
+        .input-alternative.multi-line .text-area-container .text-area-placeholder.active {
+            top: -15px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .input-alternative .input-container input:focus + label,
+        .input-alternative.multi-line .text-area-container .text-area:focus + .text-area-placeholder {
+            top: -15px;
+            font-size: 12px;
+            color: #f44336;
+        }
+
+        .input-alternative .input-container .border-bottom-input,
+        .input-alternative.multi-line .text-area-container .border-bottom-input {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            width: 0;
+            height: 2px;
+            background: #f44336;
+            -webkit-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        .input-alternative .input-container input:focus + label + .border-bottom-input,
+        .input-alternative.multi-line .text-area-container .text-area:focus+.text-area-placeholder+.border-bottom-input {
+            width: 100%;
+        }
+
+        /* ->OneLine y MultiLine */
+
+    /* ->Inputs personalizados */
+
+/* ->Estilos generales */
+
+
+/* Header */
+
+header {
+    grid-area: hd;
+    background: #f44336;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+header .login-register-button {
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 3px solid #fff;
+    border-radius: 6px;
+    transition: 0.3s all ease;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+header .login-register-button:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ->Header */
+
+/* Main */
+
+main {
+    grid-area: main;
+}
+
+/* ->Main */

@@ -1,0 +1,24 @@
+/* Estilos generales */
+
+header {
+    margin: 0 -15px;
+}
+
+#new-problem {
+    grid-area: pub;
+    padding: 25px;
+}
+
+main {
+    grid-area: pro;
+}
+
+/* ->Estilos generales */
+
+/* Publicar un nuevo problema */
+
+#new-problem h2 {
+    font-size: 16px;
+}
+
+/* ->Publicar un nuevo problema */
