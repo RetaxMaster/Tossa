@@ -7,6 +7,7 @@ header {
 #new-problem {
     grid-area: pub;
     padding: 25px;
+    height: min-content;
 }
 
 main {
@@ -19,6 +20,32 @@ main {
 
 #new-problem h2 {
     font-size: 16px;
+}
+
+main h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+main .problem {
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+main .problem h2 {
+    font-size: 20px;
+}
+
+main .problem .username {
+    font-size: 17px;
+    font-weight: bold;
+    margin: 7px 0;
+}
+
+main .problem h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 15px 0;
 }
 
 /* ->Publicar un nuevo problema */

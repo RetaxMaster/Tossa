@@ -50,4 +50,26 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // -> Detecta los textareas personalizados
 
+    // ComboBox
+
+    document.addEventListener("click", e => {
+        if(e.target.classList.contains('combo-input')){
+            let _this = e.target;
+            let comboOptions = _this.parentNode.children[2];
+            let display = comboOptions.style.display;
+            comboOptions.style.display = (display == "block") ? "none" : "block";
+        }
+    });
+
+    document.addEventListener("click", e => {
+        if(e.target.classList.contains('combo-option')){
+            let _this = e.target;
+            _this.parentNode.style.display = "none";
+            _this.parentNode.parentNode.children[0].value = _this.textContent.trim();
+            _this.parentNode.parentNode.children[0].dataset.value = _this.dataset.value;
+        }
+    });
+
+    // -> ComboBox
+
 });
