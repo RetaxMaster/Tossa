@@ -69,6 +69,7 @@ a, a:hover {
         outline: none;
         background: #ff4444;
         color: #fff;
+        cursor: pointer;
         transition: 0.3s all ease;
         -webkit-transition: 0.3s all ease;
         -moz-transition: 0.3s all ease;
@@ -279,7 +280,6 @@ a, a:hover {
     /* ->DropDowns personalizados */
 
 /* ->Estilos generales */
-
 
 /* Header */
 

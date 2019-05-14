@@ -8,13 +8,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/page2.css">
     <link rel="stylesheet" href="css/queries.css">
     <title>Problemas - Problemas</title>
 </head>
-
 <body>
+    <section id="modal">
+        <div class="modal-main">
+            <div class="modal-container">
+                <section class="modal-card" id="Respuestas">
+                    <h2>Respuestas</h2>
+                    <article class="coment">
+                        <span class="username"><b>User #1</b></span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque doloribus commodi, iure aspernatur consequatur, mollitia sunt expedita, perferendis qui et. Magnam vitae et reiciendis hic velit deserunt ad odio.</p>
+                    </article>
+                    <article class="coment">
+                        <span class="username"><b>User #1</b></span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque doloribus commodi, iure aspernatur consequatur, mollitia sunt expedita, perferendis qui et. Magnam vitae et reiciendis hic velit deserunt ad odio.</p>
+                    </article>
+                    <article class="coment">
+                        <span class="username"><b>User #1</b></span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque doloribus commodi, iure aspernatur consequatur, mollitia sunt expedita, perferendis qui et. Magnam vitae et reiciendis hic velit deserunt ad odio.</p>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </section>
     <div class="problems">
         <header>
             <div class="image-container">
@@ -75,7 +96,7 @@
         </section>
         <main role="main">
             <h1>Problemas</h1>
-            <section class="card problem">
+            <section class="card problem" data-id="1">
                 <h2><b>Título del problema</b></h2>
                 <span class="username">User #1</span>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem facilis deserunt esse vitae doloremque ab quod. Cum placeat neque porro inventore tempora, rem, velit, consectetur vel voluptatem ratione ducimus?</p>
@@ -94,7 +115,7 @@
                     <button type="button" class="btn button-2 view-answers">Ver respuestas</button>
                 </div>
             </section>
-            <section class="card problem">
+            <section class="card problem" data-id="2">
                 <h2><b>Título del problema</b></h2>
                 <span class="username">User #1</span>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem facilis deserunt esse vitae doloremque ab quod. Cum placeat neque porro inventore tempora, rem, velit, consectetur vel voluptatem ratione ducimus?</p>
@@ -113,7 +134,7 @@
                     <button type="button" class="btn button-2 view-answers">Ver respuestas</button>
                 </div>
             </section>
-            <section class="card problem">
+            <section class="card problem" data-id="3">
                 <h2><b>Título del problema</b></h2>
                 <span class="username">User #1</span>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem facilis deserunt esse vitae doloremque ab quod. Cum placeat neque porro inventore tempora, rem, velit, consectetur vel voluptatem ratione ducimus?</p>
@@ -132,7 +153,7 @@
                     <button type="button" class="btn button-2 view-answers">Ver respuestas</button>
                 </div>
             </section>
-            <section class="card problem">
+            <section class="card problem" data-id="4">
                 <h2><b>Título del problema</b></h2>
                 <span class="username">User #1</span>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem facilis deserunt esse vitae doloremque ab quod. Cum placeat neque porro inventore tempora, rem, velit, consectetur vel voluptatem ratione ducimus?</p>
@@ -166,7 +187,7 @@
         integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous">
     </script>
 
-
+    <script src="js/input/modal.js"></script>
     <script src="js/input/scripts.js"></script>
 </body>
 

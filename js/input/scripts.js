@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ComboBox
 
     document.addEventListener("click", e => {
-        if(e.target.classList.contains('combo-input')){
-            let _this = e.target;
+        let _this = e.target;
+        if(_this.classList.contains('combo-input')){
             let comboOptions = _this.parentNode.children[2];
             let display = comboOptions.style.display;
             comboOptions.style.display = (display == "block") ? "none" : "block";
@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("click", e => {
-        if(e.target.classList.contains('combo-option')){
-            let _this = e.target;
+        let _this = e.target;
+        if(_this.classList.contains('combo-option')){
             _this.parentNode.style.display = "none";
             _this.parentNode.parentNode.children[0].value = _this.textContent.trim();
             _this.parentNode.parentNode.children[0].dataset.value = _this.dataset.value;
@@ -71,5 +71,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // -> ComboBox
+
+    // Ver respuestas
+    
+    document.addEventListener("click", e => {
+        let _this = e.target;
+        if (_this.classList.contains('view-answers')) {
+            document.querySelector("#Respuestas").dataset.problem = _this.parentNode.parentNode.dataset.id;
+            showModal("Respuestas");
+        }
+    });
+    
+    // -> Ver respuestas
 
 });

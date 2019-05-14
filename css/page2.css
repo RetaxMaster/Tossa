@@ -22,6 +22,10 @@ main {
     font-size: 16px;
 }
 
+/* ->Publicar un nuevo problema */
+
+/* Sección de problemas */
+
 main h1 {
     font-size: 30px;
     margin-bottom: 10px;
@@ -48,4 +52,23 @@ main .problem h3 {
     margin: 15px 0;
 }
 
-/* ->Publicar un nuevo problema */
+/* ->Sección de problemas */
+
+/* Sección de respuestas */
+
+#modal h2 {
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+
+#modal .coment {
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+#modal .coment:last-child {
+    border-bottom: none;
+}
+
+/* ->Sección de respuestas */
