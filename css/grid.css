@@ -4,7 +4,7 @@
     display: grid;
     grid-gap: 12px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 50px 70px 1fr 50px;
+    grid-template-rows: 55px 70px 1fr 50px;
     grid-template-areas: "hd hd hd hd  hd       hd      hd      hd      hd hd hd hd"
                          ".  .  .  .   .        .       .       .       .  .  .  ."
                          ".  .  .  .   main     main    main    main    .  .  .  ."
@@ -20,10 +20,25 @@
     padding: 0 15px;
     grid-gap: 12px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 50px 1fr auto;
+    grid-template-rows: 55px 1fr auto;
     grid-template-areas: "hd  hd  hd  hd  hd  hd  hd  hd  hd  hd  hd  hd"
                          "pub pub pub .   pro pro pro pro pro pro pro ."
                          ".   .   .   .   pro pro pro pro pro pro pro ."
 }
 
 /* ->Para la página tipo 2 */
+
+/* Para la página tipo 3 */
+
+.config {
+    display: grid;
+    grid-gap: 12px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 55px 50px 1fr 50px;
+    grid-template-areas: "hd hd hd    hd    hd   hd   hd   hd   hd    hd    hd hd"
+                         ".  .  .     .     .    .    .    .    .     .     .  ."
+                         ".  .  main  main  main main main main main  main  .  ."
+                         ".  .  .     .     .    .    .    .    .     .     .  ."
+}
+
+/* ->Para la página tipo 3 */

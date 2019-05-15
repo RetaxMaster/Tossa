@@ -43,6 +43,10 @@ a, a:hover {
     font-size: 15px;
 }
 
+.delete {
+    cursor: pointer;
+}
+
 .link:hover{
     color: #1da1f2;
     text-decoration: underline;
@@ -95,10 +99,12 @@ a, a:hover {
 
     .button-container button.button-1:hover {
         background: #ff5757;
+        color: #fff;
     }
 
     .button-container button.button-1:active {
         background: #fd4747;
+        color: #fff;
     }
 
     /* ->Botones */

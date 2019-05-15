@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+main > div {
+    padding: 20px;
+}
+
+main .all-categories .category {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+main .all-categories .category:last-child {
+    border: none;
+}

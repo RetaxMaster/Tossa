@@ -19,6 +19,7 @@ const showModal = e => {
 
 // Eventos
 
+//Cerrar la ventana al hacer click afuera
 document.addEventListener("click", e => {
     let _this = e.target;
     if (_this.classList.contains('modal-main')) closeModal();
