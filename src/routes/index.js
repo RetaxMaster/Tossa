@@ -1,7 +1,10 @@
 //Este archivo enlaza a las páginas de tipo 1
 
+const passport = require('passport');
 const express = require('express');
 const router = express.Router();
+
+const { empty } = require("../lib/helpers");
 
 // Login
 router.get("/", (req, res) => {
@@ -39,8 +42,18 @@ router.post("/", (req, res) => {
 });
 
 //Register
-router.post("/register", (req, res) => {
-    res.send("do something...");
+router.post("/register", (req, res, next) => {
+    const { username, email, password, confirm_password } = req.body;
+    if (empty(username) || empty(email) || empty(password) || empty(confirm_password)) {
+        req.flash("error_msg", "Por favor rellena todos los campos");
+        return res.redirect("/register");
+    }else {
+        passport.authenticate("local.signup", {
+            successRedirect : "/problems",
+            failureRedirect : "/",
+            failureFlash : true
+        })(req, res, next);
+    }
 });
 
 //Recover

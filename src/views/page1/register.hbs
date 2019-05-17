@@ -10,6 +10,14 @@
     <div class="home">
         {{> header }}
         <main role="main">
+            {{#if error_msg}}
+            <div class="alert alert-danger" role="alert">
+                {{error_msg}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {{/if}}
             <div class="card main-form">
                 <div class="header-form">
                     <h1>Regístrate</h1>
@@ -20,26 +28,25 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Nombre de usuario">
+                        <input type="text" class="form-control" name="username" placeholder="Nombre de usuario">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i
-                                    class="fas fa-envelope-square"></i></span>
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-square"></i></span>
                         </div>
-                        <input type="email" class="form-control" placeholder="Correo electrónico">
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" class="form-control" placeholder="Contraseña">
+                        <input type="email" class="form-control" name="email" placeholder="Correo electrónico">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Repetir contraseña">
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="confirm_password" placeholder="Repetir contraseña">
                     </div><br>
                     <div class="button-container">
                         <button type="submit" class="btn button-1">Entrar</button>

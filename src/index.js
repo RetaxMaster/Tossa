@@ -5,10 +5,11 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
-//require('./lib/passport');
+require('./lib/passport');
 
 //Initializations
 const app = express();
+require("./database");
 
 //Settings
 app.set("port", process.env.PORT || 3000);
@@ -24,20 +25,24 @@ app.engine(".hbs", exphbs({
 app.set("view engine", ".hbs");
 
 //Middlewares
-/* app.use(session({
-  key: 'kfneiofh20ewf2',
+app.use(session({
+  /* key: 'kfneiofh20ewf2', */
   secret : "nwdpojpqwsd0",
-  resave : false,
-  saveUninitialized : false
-})); */
-app.use(flash());
+  resave : true,
+  saveUninitialized : true
+}));
+
 app.use(express.urlencoded({ extended : false }));
 app.use(express.json());
-/* app.use(passport.initialize());
-app.use(passport.session());*/
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 //Global variables
 app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
   next();
 });
 
