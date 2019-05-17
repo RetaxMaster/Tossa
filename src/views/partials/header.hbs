@@ -1,0 +1,40 @@
+<header>
+    <div class="image-container">
+        <a href="/">Logo</a>
+    </div>
+    {{#switch data.page}}
+
+        {{#case "login"}}
+            {{!-- Está en la página de login --}}
+            <a href="/register" class="login-register-button" title="Registrarme">Registrarme</a>
+        {{/case}}
+
+        {{#default "def"}}
+            {{#if (ifCond ../data.page "==" "problems")}}
+                {{!-- Si está en la página donde se publican los problemas --}}
+                <div class="combo">
+                    <input id="search-by-category" type="text" class="combo-input v3" readonly value="Todas" data-value="0">
+                    <i class="arrow fas fa-angle-down"></i>
+                    <div class="combo-options">
+                    <div class="combo-option" data-value="1">
+                        <span>AWS</span>
+                    </div>
+                    <div class="combo-option" data-value="2">
+                        <span>MaaS360</span>
+                    </div>
+                    <div class="combo-option" data-value="3">
+                        <span>MongoDB</span>
+                    </div>
+                    </div>
+                </div>
+            {{else if (ifCond ../data.page "!=" "config")}}
+                {{!-- Cualquier otra página que no sea la de configuración ni la de login ni la de problemas --}}
+                <a href="/" class="login-register-button" title="Iniciar sesión">Entrar</a>
+            {{/if}}
+        {{/default}}
+
+    {{/switch}}
+
+
+    
+</header>
