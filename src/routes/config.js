@@ -3,10 +3,18 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/config", (req, res) => {
+const { isLoggedIn } = require('../lib/auth');
+
+router.get("/config", isLoggedIn, (req, res) => {
     const data = req.body;
-    data.page = "config";
-    res.render("page3/config", { data });
+    const user = req.user;
+    if (user.role == "1") {
+        data.page = "config";
+        res.render("page3/config", { data });
+    }
+    else {
+        res.redirect("/problems");
+    }
 });
 
 module.exports = router;

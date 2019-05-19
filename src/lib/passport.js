@@ -10,19 +10,35 @@ passport.use("local.signup", new LocalStrategy({
     passwordField : 'password',
     passReqToCallback : true
 }, async (req, username, password, done) => {
+    const { confirm_password, email } = req.body;
     let error;
 
     if (password != confirm_password) {
         error = "Las contraseñas no coinciden";
     }
     else {
-        const newUser = new User({ username, email, password });
-        newUser.password = await newUser.encryptPassword(password);
-        await newUser.save();
-        return done(null, newUser);
+        const user = await User.findOne({username : username});
+        
+        if (!user) {
+            const emailDB = await User.findOne({email : email});
+            if (!emailDB) {
+                const newUser = new User({ username, email, password });
+                newUser.password = await newUser.encryptPassword(password);
+                await newUser.save();
+                return done(null, newUser);
+            }
+            else {
+                error = "Este email ya está registrado";
+            }
+        }
+        else {
+            error = "Este usuario ya está registrado";
+        }
     }
 
-    return done(null, false, { message : error});
+    console.log(error);
+    
+    return done(null, false, { message : error });
 }));
 
 //Login

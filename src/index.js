@@ -5,11 +5,11 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
-require('./lib/passport');
-
 //Initializations
 const app = express();
 require("./database");
+require('./lib/passport');
+require("./lib/setDefaultAdmin");
 
 //Settings
 app.set("port", process.env.PORT || 3000);

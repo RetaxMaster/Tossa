@@ -146,11 +146,13 @@
                 </div>
             </section>
         </main>
-        <a href="#" id="open-config" title="Abrir configuración del sitio">
+        {{#if (ifCond data.user.role "==" "1")}}
+        <a href="/config" id="open-config" title="Abrir configuración del sitio">
             <div class="config-button">
                 <i class="fas fa-cog"></i>
             </div>
         </a>
+        {{/if}}
     </div>
     {{> footer }}
     <script src="/js/input/modal.js"></script>
