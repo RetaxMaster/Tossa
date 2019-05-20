@@ -17,15 +17,14 @@
                         <input id="search-by-category" type="text" class="combo-input v3" readonly value="Todas" data-value="0">
                         <i class="arrow fas fa-angle-down"></i>
                         <div class="combo-options">
-                        <div class="combo-option" data-value="1">
-                            <span>AWS</span>
-                        </div>
-                        <div class="combo-option" data-value="2">
-                            <span>MaaS360</span>
-                        </div>
-                        <div class="combo-option" data-value="3">
-                            <span>MongoDB</span>
-                        </div>
+                            <div class="combo-option" data-value="0">
+                                <span>Todas</span>
+                            </div>
+                            {{#each ../data.categories}}
+                            <div class="combo-option" data-value="{{_id}}">
+                                <span>{{name}}</span>
+                            </div>
+                            {{/each}}
                         </div>
                     </div>
                     <a href="/logout" id="logout" title="Cerrar sesión">

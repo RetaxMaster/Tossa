@@ -4,16 +4,17 @@ const express = require('express');
 const router = express.Router();
 
 const { isLoggedIn } = require('../lib/auth');
+const Categories = require("../models/Categories");
 
-router.get("/", isLoggedIn, (req, res) => {
+router.get("/", isLoggedIn, async (req, res) => {
+    const categories = await Categories.find();
+    
     const data = {
         body : req.body,
         user : req.user,
+        categories : categories,
         page : "problems"
     };
-    
-    console.log(data.user);
-    
 
     res.render("page2/problems", { data });
 });

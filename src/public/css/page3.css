@@ -10,13 +10,31 @@ main > div {
     padding: 20px;
 }
 
-main .all-categories .category {
+main .config-section {
+    margin: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+main .config-section:last-child {
+    border-bottom: none;
+}
+
+main .all-categories .category,
+main .all-admins .admin {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
 }
 
-main .all-categories .category:last-child {
+main .all-categories .category:last-child,
+main .all-admins .admin:last-child {
     border: none;
+}
+
+main .all-categories,
+main .all-admins {
+    overflow-y: auto;
+    max-height: 270px;
+    overflow-x: hidden
 }

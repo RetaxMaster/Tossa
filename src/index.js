@@ -4,6 +4,12 @@ const path = require('path');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const MongoDBStore = require('connect-mongodb-session')(session);
+
+const store = new MongoDBStore({
+  uri: 'mongodb://localhost:27017/problems',
+  collection: 'mySessions'
+});
 
 //Initializations
 const app = express();
@@ -28,8 +34,9 @@ app.set("view engine", ".hbs");
 app.use(session({
   /* key: 'kfneiofh20ewf2', */
   secret : "nwdpojpqwsd0",
-  resave : true,
-  saveUninitialized : true
+  resave: false,
+  saveUninitialized: true,
+  store : store
 }));
 
 app.use(express.urlencoded({ extended : false }));
@@ -50,6 +57,7 @@ app.use((req, res, next) => {
 app.use(require('./routes'));
 app.use("/problems", require('./routes/problems'));
 app.use(require('./routes/config'));
+app.use(require('./routes/ajaxRequests'));
 
 //Public
 app.use(express.static(path.join(__dirname, "public")));

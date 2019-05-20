@@ -51,15 +51,11 @@
                     <input id="category" type="text" class="combo-input v2" readonly value="Selecciona una categoría" data-value="0">
                     <i class="arrow fas fa-angle-down"></i>
                     <div class="combo-options">
-                      <div class="combo-option" data-value="1">
-                        <span>AWS</span>
-                      </div>
-                      <div class="combo-option" data-value="2">
-                        <span>MaaS360</span>
-                      </div>
-                      <div class="combo-option" data-value="3">
-                        <span>MongoDB</span>
-                      </div>
+                        {{#each data.categories}}
+                        <div class="combo-option" data-value="{{_id}}">
+                            <span>{{name}}</span>
+                        </div>
+                        {{/each}}
                     </div>
                 </div>
                 <div class="button-container right">

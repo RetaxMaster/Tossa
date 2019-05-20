@@ -12,55 +12,76 @@
             <h1>Configuración</h1><br>
             <div class="card">
                 <p class="off">En esta sección podrás editar algunas secciones de la página</p>
-                <form action="#" method="post">
-                    <fieldset>
-                        <legend>Categorías</legend>
-                        <div class="form-group">
-                            <label for="new-category">Nueva categoría:</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-plus"></i></span>
+                <section class="config-section" id="add-categories">
+                    <form action="#" method="post" id="new-category">
+                        <fieldset>
+                            <legend>Categorías</legend>
+                            <div class="form-group">
+                                <label for="new-category">Nueva categoría:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-plus"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="category-name" placeholder="Nueva categoría">
                                 </div>
-                                <input type="text" class="form-control" id="new-category" placeholder="Nueva categoría">
                             </div>
-                        </div>
-                        <div class="button-container">
-                            <button type="submit" class="btn button-1">Agregar</button>
-                        </div>
-                    </fieldset>
-                </form>
-                <section id="your-categories">
-                    <h2>Tus categorías</h2>
-                    <div class="all-categories">
-                        <div class="category">
-                            <span>Categoría 1</span>
-                            <div class="delete">
+                            <div class="button-container">
+                                <button type="submit" class="btn button-1">Agregar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <section id="your-categories">
+                        <h2>Tus categorías</h2>
+                        <div class="all-categories">
+                            {{#each data.categories}}
+                            <div class="category" data-id="{{_id}}">
+                                <span>{{name}}</span>
+                                <div class="delete">
                                     <i class="fas fa-times"></i>
+                                </div>
                             </div>
+                            {{/each}}
                         </div>
-                        <div class="category">
-                            <span>Categoría 1</span>
-                            <div class="delete">
+                    </section>
+                </section>
+                <section class="config-section" id="add-admins">
+                    <form action="#" method="post" id="new-admin">
+                        <fieldset>
+                            <legend>Administradores</legend>
+                            <div class="form-group">
+                                <label for="new-category">Nuevo administrador:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-plus"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="admin-name" placeholder="Nombre de usuario">
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button type="submit" class="btn button-1">Agregar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <section id="your-admins">
+                        <h2>Todos los administradores</h2>
+                        <div class="all-admins">
+                            {{#each data.admins}}
+                            <div class="admin" data-id="{{_id}}">
+                                <span>{{username}}</span>
+                                {{#if (ifCond (ifCond username "!=" "Admin") "&&" (ifCond username "!=" ../data.user.username))}}
+                                <div class="delete">
                                     <i class="fas fa-times"></i>
+                                </div>
+                                {{/if}}
                             </div>
+                            {{/each}}
                         </div>
-                        <div class="category">
-                            <span>Categoría 1</span>
-                            <div class="delete">
-                                    <i class="fas fa-times"></i>
-                            </div>
-                        </div>
-                        <div class="category">
-                            <span>Categoría 1</span>
-                            <div class="delete">
-                                    <i class="fas fa-times"></i>
-                            </div>
-                        </div>
-                    </div>
+                    </section>
                 </section>
             </div>
         </main>
     </div>
     <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <script src="/js/input/config.js"></script>
 </body>
 </html>
