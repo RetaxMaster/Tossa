@@ -37,14 +37,22 @@ module.exports = {
         console.log("Message sent: %s", info.messageId);
       },
 
-      getRandomString : (length) => {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    getRandomString : (length) => {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        for (var i = 0; i < length; i++)
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
+      for (var i = 0; i < length; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-        return text;
-      }
+      return text;
+    },
+
+    removeSpecialChars : (texto) => {
+      return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    },
+
+    parseUrlName : function (name) {
+      return this.removeSpecialChars(name.toLowerCase().trim().split(" ").join("-"));
+    }
     
 }

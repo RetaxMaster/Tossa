@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         'Content-Type': 'application/json; charset=UTF-8'
                     },
                     method: 'POST',
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(data)
                 });
                 res = JSON.parse(await res.text());
                 // -> Petición Ajax
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         'Content-Type': 'application/json; charset=UTF-8'
                     },
                     method: 'POST',
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(data)
                 });
                 res = JSON.parse(await res.text());
                 

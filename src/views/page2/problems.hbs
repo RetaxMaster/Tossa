@@ -32,18 +32,18 @@
         {{> header }}
         <section class="card" id="new-problem">
             <h2>Publica un nuevo problema</h2><br>
-            <form action="#" method="post">
+            <form action="#" method="post" id="new-problem-form">
                 <div class="input-alternative">
                     <div class="input-container">
                         <input type="text" id="problem-title">
-                        <label for="problem-title">Nombre de usuario</label>
+                        <label for="problem-title">Título del problema</label>
                         <div class="border-bottom-input"></div>
                     </div>
                 </div>
                 <div class="input-alternative multi-line">
                     <div class="text-area-container">
                         <div class="text-area" contenteditable="true" id="write-problem"></div>
-                        <div data-for="write-problem" class="text-area-placeholder">¿En qué podemos ayudarte?</div>
+                        <div data-for="write-problem" class="text-area-placeholder" id="problem-description">¿En qué podemos ayudarte?</div>
                         <div class="border-bottom-input"></div>
                     </div>
                 </div>
@@ -65,82 +65,29 @@
         </section>
         <main role="main">
             <h1>Problemas</h1>
-            <section class="card problem" data-id="1">
-                <h2><b>Título del problema</b></h2>
-                <span class="username">User #1</span>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem facilis deserunt esse vitae doloremque ab quod. Cum placeat neque porro inventore tempora, rem, velit, consectetur vel voluptatem ratione ducimus?</p>
-                <section class="write-answer">
-                    <h3>Publica una respuesta</h3>
-                    <div class="input-alternative multi-line">
-                        <div class="text-area-container">
-                            <div class="text-area" contenteditable="true" id="write-answer-1"></div>
-                            <div data-for="write-answer-1" class="text-area-placeholder">Tu respuesta</div>
-                            <div class="border-bottom-input"></div>
+            <div id="all-problems">
+                {{#each data.problems}}
+                <section class="card problem" data-id="{{_id}}">
+                    <h2><b>{{title}}</b></h2>
+                    <span class="username">{{user}}</span>
+                    <p>{{description}}</p>
+                    <section class="write-answer">
+                        <h3>Publica una respuesta</h3>
+                        <div class="input-alternative multi-line">
+                            <div class="text-area-container">
+                                <div class="text-area" contenteditable="true" id="write-answer-1"></div>
+                                <div data-for="write-answer-1" class="text-area-placeholder">Tu respuesta</div>
+                                <div class="border-bottom-input"></div>
+                            </div>
                         </div>
+                    </section>
+                    <div class="button-container right">
+                        <button type="button" class="btn button-2 make-answer">Responder</button>
+                        <button type="button" class="btn button-2 view-answers">Ver respuestas</button>
                     </div>
                 </section>
-                <div class="button-container right">
-                    <button type="button" class="btn button-2 make-answer">Responder</button>
-                    <button type="button" class="btn button-2 view-answers">Ver respuestas</button>
-                </div>
-            </section>
-            <section class="card problem" data-id="2">
-                <h2><b>Título del problema</b></h2>
-                <span class="username">User #1</span>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem facilis deserunt esse vitae doloremque ab quod. Cum placeat neque porro inventore tempora, rem, velit, consectetur vel voluptatem ratione ducimus?</p>
-                <section class="write-answer">
-                    <h3>Publica una respuesta</h3>
-                    <div class="input-alternative multi-line">
-                        <div class="text-area-container">
-                            <div class="text-area" contenteditable="true" id="write-answer-1"></div>
-                            <div data-for="write-answer-1" class="text-area-placeholder">Tu respuesta</div>
-                            <div class="border-bottom-input"></div>
-                        </div>
-                    </div>
-                </section>
-                <div class="button-container right">
-                    <button type="button" class="btn button-2 make-answer">Responder</button>
-                    <button type="button" class="btn button-2 view-answers">Ver respuestas</button>
-                </div>
-            </section>
-            <section class="card problem" data-id="3">
-                <h2><b>Título del problema</b></h2>
-                <span class="username">User #1</span>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem facilis deserunt esse vitae doloremque ab quod. Cum placeat neque porro inventore tempora, rem, velit, consectetur vel voluptatem ratione ducimus?</p>
-                <section class="write-answer">
-                    <h3>Publica una respuesta</h3>
-                    <div class="input-alternative multi-line">
-                        <div class="text-area-container">
-                            <div class="text-area" contenteditable="true" id="write-answer-1"></div>
-                            <div data-for="write-answer-1" class="text-area-placeholder">Tu respuesta</div>
-                            <div class="border-bottom-input"></div>
-                        </div>
-                    </div>
-                </section>
-                <div class="button-container right">
-                    <button type="button" class="btn button-2 make-answer">Responder</button>
-                    <button type="button" class="btn button-2 view-answers">Ver respuestas</button>
-                </div>
-            </section>
-            <section class="card problem" data-id="4">
-                <h2><b>Título del problema</b></h2>
-                <span class="username">User #1</span>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem facilis deserunt esse vitae doloremque ab quod. Cum placeat neque porro inventore tempora, rem, velit, consectetur vel voluptatem ratione ducimus?</p>
-                <section class="write-answer">
-                    <h3>Publica una respuesta</h3>
-                    <div class="input-alternative multi-line">
-                        <div class="text-area-container">
-                            <div class="text-area" contenteditable="true" id="write-answer-1"></div>
-                            <div data-for="write-answer-1" class="text-area-placeholder">Tu respuesta</div>
-                            <div class="border-bottom-input"></div>
-                        </div>
-                    </div>
-                </section>
-                <div class="button-container right">
-                    <button type="button" class="btn button-2 make-answer">Responder</button>
-                    <button type="button" class="btn button-2 view-answers">Ver respuestas</button>
-                </div>
-            </section>
+                {{/each}}
+            </div>
         </main>
         {{#if (ifCond data.user.role "==" "1")}}
         <a href="/config" id="open-config" title="Abrir configuración del sitio">
@@ -151,8 +98,7 @@
         {{/if}}
     </div>
     {{> footer }}
-    <script src="/js/input/modal.js"></script>
-    <script src="/js/input/scripts.js"></script>
+    <script src="/js/input/problems.js"></script>
 </body>
 
 </html>

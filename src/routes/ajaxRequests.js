@@ -4,40 +4,49 @@ const express = require('express');
 const router = express.Router();
 const Categories = require("../models/Categories");
 const User = require("../models/Users");
+const Problems = require("../models/Problems");
+const Responses = require("../models/Responses");
 const { isLoggedIn } = require('../lib/auth');
+const f = require("../lib/helpers");
 
 router.post("/requests", isLoggedIn, async (req, res) => {
     const { mode } = req.body;
-    const user = req.user;
     const response = {};
 
     switch (mode) {
+
+        //Añade una nueva categoría
         case "addCategory":
-            const { name } = req.body;
-            const category = await Categories.findOne({ name : name });
+            let { name } = req.body;
+            let url_name = f.parseUrlName(name);
+            console.log(url_name);
             
+            let category = await Categories.findOne({ name : name });
+        
             if (category) {
                 response.status = false;
                 response.error = "Esta categoría ya está creada.";
             }
             else {
-                const newCategory = new Categories({ name });
+                const newCategory = new Categories({ name, url_name });
                 await newCategory.save();
                 response.status = true;
                 response.name = name;
                 response.id = newCategory._id;
             }
             break;
-
+        
+        //Elimina una categoría
         case "deleteCategory":
             let { id } = req.body;
             await Categories.findByIdAndDelete(id);
             response.status = true;
             break;
 
+        //Agrega un administrador a la página
         case "addAdmin":
-            const { username } = req.body;
-            const user = await User.findOne({ username : username });
+            let { username } = req.body;
+            let user = await User.findOne({ username : username });
             if (user) {
                 user.role = "1";
                 await user.save();
@@ -50,13 +59,39 @@ router.post("/requests", isLoggedIn, async (req, res) => {
                 response.error = "Este usuario no existe.";
             }
             break;
-
+        
+        //Elimina un ad inistrador de la página
         case "deleteAdmin":
             let adminId = req.body.id;
             await User.findByIdAndUpdate(adminId, {
                 role: "0"
             });
             response.status = true;
+            break;
+        
+        //Publica un nuevo problema
+        case "newProblem":
+            let { title, description } = req.body;
+            let problemCategory = req.body.category;
+            let usrname = req.user.username;
+
+            const newProblem = new Problems({ 
+                title : title, 
+                description : description, 
+                category : problemCategory, 
+                user : usrname
+            });
+            await newProblem.save();
+
+            response.status = true;
+            response.problems = {
+                id : newProblem._id,
+                title : title,
+                description : description,
+                category : problemCategory, 
+                user: req.user.username
+            }
+
             break;
     
         default:

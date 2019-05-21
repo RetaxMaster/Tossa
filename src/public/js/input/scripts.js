@@ -53,21 +53,28 @@ document.addEventListener("DOMContentLoaded", () => {
     // ComboBox
 
     document.addEventListener("click", e => {
-        let _this = e.target;
-        if(_this.classList.contains('combo-input')){
-            let comboOptions = _this.parentNode.children[2];
-            let display = comboOptions.style.display;
-            comboOptions.style.display = (display == "block") ? "none" : "block";
-        }
+        e.path.every(_this => {
+            if (_this.classList && _this.classList.contains('combo-input')) {
+                let comboOptions = _this.parentNode.children[2];
+                let display = comboOptions.style.display;
+                comboOptions.style.display = (display == "block") ? "none" : "block";
+                return false;
+            }
+            return true;
+        });
     });
 
     document.addEventListener("click", e => {
-        let _this = e.target;
-        if(_this.classList.contains('combo-option')){
-            _this.parentNode.style.display = "none";
-            _this.parentNode.parentNode.children[0].value = _this.textContent.trim();
-            _this.parentNode.parentNode.children[0].dataset.value = _this.dataset.value;
-        }
+        e.path.every(_this => {
+            if (_this.classList && _this.classList.contains('combo-option')) {
+                _this.parentNode.style.display = "none";
+                _this.parentNode.parentNode.children[0].value = _this.textContent.trim();
+                _this.parentNode.parentNode.children[0].dataset.value = _this.dataset.value;
+                _this.parentNode.parentNode.children[0].dispatchEvent(new Event("change"));
+                return false;
+            }
+            return true;
+        });
     });
 
     // -> ComboBox

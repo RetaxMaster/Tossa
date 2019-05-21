@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const CategoriesSchema = new Schema({
-    name: {
+const ResponsesSchema = new Schema({
+    response : {
         type: String,
         required: true
     },
-    url_name: {
+    user: {
         type: String,
         required: true
     }
 });
 
-module.exports = mongoose.model("Categories", CategoriesSchema);
+module.exports = mongoose.model("Responses", ResponsesSchema);
