@@ -9,3 +9,7 @@ const removeSpecialChars = (texto) => {
 const parseUrlName = function (name) {
     return removeSpecialChars(name.toLowerCase().trim().split(" ").join("-"));
 }
+
+const putLineBreaks = (text) => {
+    return text.split("\\n").join("<br>");
+}

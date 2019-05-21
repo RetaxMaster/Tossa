@@ -54,30 +54,33 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#add-categories").addEventListener("click", e => {
         e.path.every(async _this => {
             if (_this.classList && _this.classList.contains("delete")) {
-                const element = _this.parentNode;
-                const id = element.dataset.id;
-                var data = {
-                    mode : "deleteCategory",
-                    id : id
-                }
-
-                // Petición Ajax
-                let res = await fetch("/requests", {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json; charset=UTF-8'
-                    },
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                });
-                res = JSON.parse(await res.text());
-                // -> Petición Ajax
-
-                if (res.status) {
-                    element.parentNode.removeChild(element);
-                }
-                else {
-                    alert(res.error);
+                const sure = confirm("¿Seguro que deseas eliminar esta categoría? Ten en cuenta que al eliminarla se eliminarán todos los problemas que estén publicados en la misma.");
+                if (sure) {
+                    const element = _this.parentNode;
+                    const id = element.dataset.id;
+                    var data = {
+                        mode : "deleteCategory",
+                        id : id
+                    }
+    
+                    // Petición Ajax
+                    let res = await fetch("/requests", {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json; charset=UTF-8'
+                        },
+                        method: 'POST',
+                        body: JSON.stringify(data)
+                    });
+                    res = JSON.parse(await res.text());
+                    // -> Petición Ajax
+    
+                    if (res.status) {
+                        element.parentNode.removeChild(element);
+                    }
+                    else {
+                        alert(res.error);
+                    }
                 }
                 
                 return false;

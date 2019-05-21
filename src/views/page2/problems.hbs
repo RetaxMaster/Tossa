@@ -12,18 +12,7 @@
             <div class="modal-container">
                 <section class="modal-card" id="Respuestas">
                     <h2>Respuestas</h2>
-                    <article class="coment">
-                        <span class="username"><b>User #1</b></span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque doloribus commodi, iure aspernatur consequatur, mollitia sunt expedita, perferendis qui et. Magnam vitae et reiciendis hic velit deserunt ad odio.</p>
-                    </article>
-                    <article class="coment">
-                        <span class="username"><b>User #1</b></span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque doloribus commodi, iure aspernatur consequatur, mollitia sunt expedita, perferendis qui et. Magnam vitae et reiciendis hic velit deserunt ad odio.</p>
-                    </article>
-                    <article class="coment">
-                        <span class="username"><b>User #1</b></span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque doloribus commodi, iure aspernatur consequatur, mollitia sunt expedita, perferendis qui et. Magnam vitae et reiciendis hic velit deserunt ad odio.</p>
-                    </article>
+                    <div id="all-responses"></div>
                 </section>
             </div>
         </div>
@@ -43,7 +32,7 @@
                 <div class="input-alternative multi-line">
                     <div class="text-area-container">
                         <div class="text-area" contenteditable="true" id="write-problem"></div>
-                        <div data-for="write-problem" class="text-area-placeholder" id="problem-description">¿En qué podemos ayudarte?</div>
+                        <div data-for="write-problem" class="text-area-placeholder" id="problem-description">Tipo de problema</div>
                         <div class="border-bottom-input"></div>
                     </div>
                 </div>
@@ -64,18 +53,23 @@
             </form>
         </section>
         <main role="main">
-            <h1>Problemas</h1>
+            <h1>Últimos problemas reportados</h1>
             <div id="all-problems">
+                {{#if (hasntChilds data.problems)}}
+                <section id="no-problems-found" class="card">
+                    <h2>No hemos encontrado problemas</h2>
+                </section>
+                {{/if}}
                 {{#each data.problems}}
                 <section class="card problem" data-id="{{_id}}">
                     <h2><b>{{title}}</b></h2>
                     <span class="username">{{user}}</span>
-                    <p>{{description}}</p>
+                    <p>{{#putLineBreaks description}}{{/putLineBreaks}}</p>
                     <section class="write-answer">
                         <h3>Publica una respuesta</h3>
                         <div class="input-alternative multi-line">
                             <div class="text-area-container">
-                                <div class="text-area" contenteditable="true" id="write-answer-1"></div>
+                                <div class="text-area" contenteditable="true"></div>
                                 <div data-for="write-answer-1" class="text-area-placeholder">Tu respuesta</div>
                                 <div class="border-bottom-input"></div>
                             </div>

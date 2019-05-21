@@ -79,16 +79,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // -> ComboBox
 
-    // Ver respuestas
-    
-    document.addEventListener("click", e => {
-        let _this = e.target;
-        if (_this.classList.contains('view-answers')) {
-            document.querySelector("#Respuestas").dataset.problem = _this.parentNode.parentNode.dataset.id;
-            showModal("Respuestas");
-        }
-    });
-    
-    // -> Ver respuestas
-
 });

@@ -350,3 +350,22 @@ main {
 }
 
 /* ->Main */
+
+/* No se encontraron problemas */
+
+#no-problems-found {
+    padding: 20px;
+    text-align: center;
+}
+
+#no-problems-found h2 {
+    font-size: 20px;
+}
+
+.no-responses-founded {
+    text-align: center;
+    padding: 20px;
+    color: #ccc;
+}
+
+/* ->No se encontraron problemas */

@@ -13,6 +13,29 @@ router.post("/requests", isLoggedIn, async (req, res) => {
     const { mode } = req.body;
     const response = {};
 
+    const deleteProblem = async problemId => {
+        console.log("-------------");
+        console.log(problemId);
+        
+        const allResponses = await Responses.find({problem : problemId});
+        allResponses.forEach(async responses => {
+            await Responses.findByIdAndDelete(responses._id);
+        });
+
+        await Problems.findByIdAndDelete(problemId);
+    };
+
+    const deleteCategory = async categoryId => {
+        console.log("-------------");
+        console.log(categoryId);
+        
+        const allProblems = await Problems.find({category : categoryId});
+        allProblems.forEach(problem => {
+            deleteProblem(problem._id);
+        });
+        await Categories.findByIdAndDelete(categoryId);
+    };
+
     switch (mode) {
 
         //Añade una nueva categoría
@@ -39,7 +62,7 @@ router.post("/requests", isLoggedIn, async (req, res) => {
         //Elimina una categoría
         case "deleteCategory":
             let { id } = req.body;
-            await Categories.findByIdAndDelete(id);
+            deleteCategory(id);
             response.status = true;
             break;
 
@@ -60,7 +83,7 @@ router.post("/requests", isLoggedIn, async (req, res) => {
             }
             break;
         
-        //Elimina un ad inistrador de la página
+        //Elimina un administrador de la página
         case "deleteAdmin":
             let adminId = req.body.id;
             await User.findByIdAndUpdate(adminId, {
@@ -92,6 +115,28 @@ router.post("/requests", isLoggedIn, async (req, res) => {
                 user: req.user.username
             }
 
+            break;
+
+        case "makeResponse":
+            const { responseText, pubId } = req.body;
+            const usr = req.user.username;
+
+            const newResponse = new Responses({ 
+                response: responseText,
+                user : usr,
+                problem : pubId 
+            });
+            await newResponse.save();
+
+            response.status = true;
+            break;
+
+        case "getResponses":
+            const idPub = req.body.id;
+            const responses = await Responses.find({ problem : idPub});
+
+            response.status = true;
+            response.responses = responses;
             break;
     
         default:
