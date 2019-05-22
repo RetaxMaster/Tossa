@@ -58,7 +58,7 @@ router.get("/logout", isLoggedIn, (req, res) => {
 
 // Login
 router.post("/", isNotLoggedIn, passport.authenticate("local.signin", {
-    successRedirect : "/problems",
+    successRedirect : "/problems/all",
     failureRedirect : "/",
     failureFlash : true
 }));
