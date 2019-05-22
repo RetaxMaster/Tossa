@@ -1,11 +1,12 @@
 {
-  "name": "problemas",
+  "name": "Tossa",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src",
-    "build": "babel src/public/js/input -d src/public/js/output",
+    "build": "webpack",
+    "build-babel": "babel src/public/js/input -d src/public/js/output",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/RetaxMaster/Problemas#readme",
   "dependencies": {
+    "@babel/runtime": "^7.4.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -33,9 +35,13 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.0",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5"
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "nodemon": "^1.19.0",
+    "webpack": "^4.32.1",
+    "webpack-cli": "^3.3.2"
   }
 }
