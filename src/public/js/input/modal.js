@@ -1,19 +1,22 @@
 // Funciones
 
-const closeModal = () => {
-    const modal = document.querySelector("#modal");
-    modal.classList.remove("show");
+const modalFunctions = {
+    closeModal : () => {
+        const modal = document.querySelector("#modal");
+        modal.classList.remove("show");
 
-    setTimeout(() => {
-        const cards = modal.querySelectorAll(".modal-card");
-        cards.forEach(e => e.style.display = "none");
-    }, 300);
+        setTimeout(() => {
+            const cards = modal.querySelectorAll(".modal-card");
+            cards.forEach(e => e.style.display = "none");
+        }, 300);
+    },
+
+    showModal : e => {
+        document.querySelector(`#${e}`).style.display = "block";
+        document.querySelector("#modal").classList.add("show");
+    }
 }
 
-const showModal = e => {
-    document.querySelector(`#${e}`).style.display = "block";
-    document.querySelector("#modal").classList.add("show");
-}
 
 // -> Funciones
 
@@ -22,7 +25,9 @@ const showModal = e => {
 //Cerrar la ventana al hacer click afuera
 document.addEventListener("click", e => {
     let _this = e.target;
-    if (_this.classList.contains('modal-main')) closeModal();
+    if (_this.classList.contains('modal-main')) modalFunctions.closeModal();
 });
 
 // -> Eventos
+
+export default modalFunctions

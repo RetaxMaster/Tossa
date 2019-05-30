@@ -14,9 +14,6 @@ router.post("/requests", isLoggedIn, async (req, res) => {
     const response = {};
 
     const deleteProblem = async problemId => {
-        console.log("-------------");
-        console.log(problemId);
-        
         const allResponses = await Responses.find({problem : problemId});
         allResponses.forEach(async responses => {
             await Responses.findByIdAndDelete(responses._id);
@@ -26,9 +23,6 @@ router.post("/requests", isLoggedIn, async (req, res) => {
     };
 
     const deleteCategory = async categoryId => {
-        console.log("-------------");
-        console.log(categoryId);
-        
         const allProblems = await Problems.find({category : categoryId});
         allProblems.forEach(problem => {
             deleteProblem(problem._id);
@@ -36,13 +30,14 @@ router.post("/requests", isLoggedIn, async (req, res) => {
         await Categories.findByIdAndDelete(categoryId);
     };
 
+    let responseId = "", action = "", userResponse;
+
     switch (mode) {
 
         //Añade una nueva categoría
         case "addCategory":
             let { name } = req.body;
             let url_name = f.parseUrlName(name);
-            console.log(url_name);
             
             let category = await Categories.findOne({ name : name });
         
@@ -137,6 +132,37 @@ router.post("/requests", isLoggedIn, async (req, res) => {
 
             response.status = true;
             response.responses = responses;
+            response.userId = req.user._id;
+            break;
+
+        case "like":
+            responseId = req.body.responseId;
+            action = req.body.action;
+            userResponse = await Responses.findById(responseId);
+            
+            if(action == "put")
+                userResponse.likes.push(req.user._id);
+            else
+                userResponse.likes.splice(userResponse.likes.indexOf(req.user._id), 1);
+            
+            userResponse.save();
+            response.status = true;
+            response.total = userResponse.likes.length;
+            break;
+
+        case "dislike":
+            responseId = req.body.responseId;
+            action = req.body.action;
+            userResponse = await Responses.findById(responseId);
+            
+            if(action == "put")
+                userResponse.dislikes.push(req.user._id);
+            else
+                userResponse.dislikes.splice(userResponse.dislikes.indexOf(req.user._id), 1);
+
+            userResponse.save();
+            response.status = true;
+            response.total = userResponse.dislikes.length;
             break;
     
         default:

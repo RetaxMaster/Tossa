@@ -71,6 +71,25 @@ main .problem h3 {
     border-bottom: none;
 }
 
+#modal .coment .usefull {
+    display: flex;
+    font-size: 13px;
+    color: #676767;
+    margin-top: 3px;
+}
+
+#modal .coment .usefull > div:first-child {
+    margin-right: 5px;
+}
+
+#modal .coment .usefull > div {
+    cursor: pointer;
+}
+
+#modal .coment .usefull > div.focused {
+    color:#f7756f !important;
+}
+
 /* ->Sección de respuestas */
 
 /* Botón para ir a la configuración */

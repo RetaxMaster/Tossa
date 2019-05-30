@@ -90,10 +90,11 @@
 /*!******************************************!*\
   !*** ./src/public/js/input/functions.js ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var empty = function empty(string) {\n  return string == \"\";\n};\n\nvar removeSpecialChars = function removeSpecialChars(texto) {\n  return texto.normalize('NFD').replace(/[\\u0300-\\u036f]/g, \"\");\n};\n\nvar parseUrlName = function parseUrlName(name) {\n  return removeSpecialChars(name.toLowerCase().trim().split(\" \").join(\"-\"));\n};\n\nvar putLineBreaks = function putLineBreaks(text) {\n  return text.split(\"\\\\n\").join(\"<br>\");\n};\n\n//# sourceURL=webpack:///./src/public/js/input/functions.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  empty: function empty(string) {\n    return string == \"\";\n  },\n  removeSpecialChars: function removeSpecialChars(texto) {\n    return texto.normalize('NFD').replace(/[\\u0300-\\u036f]/g, \"\");\n  },\n  parseUrlName: function parseUrlName(name) {\n    return this.removeSpecialChars(name.toLowerCase().trim().split(\" \").join(\"-\"));\n  },\n  putLineBreaks: function putLineBreaks(text) {\n    return text.split(\"\\\\n\").join(\"<br>\");\n  }\n});\n\n//# sourceURL=webpack:///./src/public/js/input/functions.js?");
 
 /***/ })
 

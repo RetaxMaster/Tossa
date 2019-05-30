@@ -82,7 +82,6 @@ router.post("/register", isNotLoggedIn, (req, res, next) => {
 router.post("/recover", isNotLoggedIn, async (req, res) => {
     const { email } = req.body;
     const user = await User.findOne({email : email});
-    console.log(user);
     
     if (user) {
         const code = getRandomString(10);

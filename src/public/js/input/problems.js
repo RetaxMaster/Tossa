@@ -1,3 +1,8 @@
+import f from "./functions";
+import m from "./modal";
+const { empty, putLineBreaks, parseUrlName } = f;
+const { showModal } = m;
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // Cambiar de categoría
@@ -75,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     //Eliminamos el mensaje de que no se encontraron problemas
                     const noProblemsFound = document.querySelector("#no-problems-found");
-                    noProblemsFound.parentNode.removeChild(noProblemsFound);
+                    if (noProblemsFound) noProblemsFound.parentNode.removeChild(noProblemsFound);
         
                     //Reestablecemos los campos
                     titleInput.value = "";
@@ -85,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     descriptionInput.focus();
                     descriptionInput.blur();
                     categoryInput.value = "Selecciona una categoría";
-                    categoryInput.datatset.value = "0";
+                    categoryInput.dataset.value = "0";
                 }
                 else {
                     alert(res.error);
@@ -98,6 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     // -> Publicar un nuevo problema
+
+    // Idica si se ha dado like o no a un comentario
+
+    const putFocused = (all, userId) => {
+        return (all.includes(userId)) ? "focused" : "";
+    }
+
+    // -> Idica si se ha dado like o no a un comentario
 
     // Abrir la caja de respuestas
     
@@ -120,9 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (res.status) {
             //Limpio el contenedor
             const allResponses = document.querySelector("#all-responses");
+            const userId = res.userId;
             allResponses.innerHTML = "";
 
-            if (res.responses.length > 0) {     
+            if (res.responses.length > 0) {
+                
                 res.responses.reverse();
     
                 //Inserto los nuevos elementos
@@ -131,6 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     <article class="coment" data-id="${response._id}">
                         <span class="username"><b>${response.user}</b></span>
                         <p>${putLineBreaks(response.response)}</p>
+                        <div class="usefull">
+                            <div class="like ${putFocused(response.likes, userId)}">
+                                <i class="fas fa-thumbs-up"></i> (<span>${response.likes.length}</span>)
+                            </div>
+                            <div class="dislike ${putFocused(response.dislikes, userId)}">
+                                <i class="fas fa-thumbs-down"></i> (<span>${response.dislikes.length}</span>)
+                            </div>
+                        </div>
                     </article>`;
                     responseUser = document.createRange().createContextualFragment(responseUser);
                     allResponses.append(responseUser);
@@ -212,5 +235,72 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // -> Ver respuestas
+
+    // Da like o dislike a una respuesta
+
+    const setFocus = async (_this, mode) => {
+        const isLiked = _this.classList.contains("focused");
+        const comId = _this.parentNode.parentNode.dataset.id;
+
+        const action = isLiked ? "quit" : "put";
+
+        const data = {
+            mode: mode,
+            responseId: comId,
+            action: action
+        }
+
+        let res = await fetch("/requests", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+        res = JSON.parse(await res.text());
+
+        if (res.status) {
+            if (!isLiked) _this.classList.add("focused");
+            else _this.classList.remove("focused");
+
+            _this.children[1].textContent = res.total;
+        }
+        else {
+            alert(res.error);
+        }
+    }
+
+    // -> Da like o dislike a una respuesta
+
+    // Dar like
+
+    document.addEventListener("click", e => {
+        e.path.every(_this => {
+            if (_this.classList && _this.classList.contains('like')) {
+                if (!_this.parentNode.children[1].classList.contains("focused")) 
+                    setFocus(_this, "like");
+                return false;
+            }
+            return true;
+        });
+    });
+
+    // -> Dar like
+
+    // Dar dislike
+
+    document.addEventListener("click", e => {
+        e.path.every(_this => {
+            if (_this.classList && _this.classList.contains('dislike')) {
+                if (!_this.parentNode.children[0].classList.contains("focused"))
+                    setFocus(_this, "dislike");
+                return false;
+            }
+            return true;
+        });
+    });
+
+    // -> Dar dislike
 
 });

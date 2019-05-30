@@ -13,6 +13,14 @@ const ResponsesSchema = new Schema({
     problem: {
         type: String,
         required: true
+    },
+    likes: {
+        type: Array,
+        default: []
+    },
+    dislikes: {
+        type: Array,
+        default: []
     }
 });
 

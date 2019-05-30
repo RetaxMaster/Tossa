@@ -90,10 +90,11 @@
 /*!**************************************!*\
   !*** ./src/public/js/input/modal.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("// Funciones\nvar closeModal = function closeModal() {\n  var modal = document.querySelector(\"#modal\");\n  modal.classList.remove(\"show\");\n  setTimeout(function () {\n    var cards = modal.querySelectorAll(\".modal-card\");\n    cards.forEach(function (e) {\n      return e.style.display = \"none\";\n    });\n  }, 300);\n};\n\nvar showModal = function showModal(e) {\n  document.querySelector(\"#\".concat(e)).style.display = \"block\";\n  document.querySelector(\"#modal\").classList.add(\"show\");\n}; // -> Funciones\n// Eventos\n//Cerrar la ventana al hacer click afuera\n\n\ndocument.addEventListener(\"click\", function (e) {\n  var _this = e.target;\n  if (_this.classList.contains('modal-main')) closeModal();\n}); // -> Eventos\n\n//# sourceURL=webpack:///./src/public/js/input/modal.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// Funciones\nvar modalFunctions = {\n  closeModal: function closeModal() {\n    var modal = document.querySelector(\"#modal\");\n    modal.classList.remove(\"show\");\n    setTimeout(function () {\n      var cards = modal.querySelectorAll(\".modal-card\");\n      cards.forEach(function (e) {\n        return e.style.display = \"none\";\n      });\n    }, 300);\n  },\n  showModal: function showModal(e) {\n    document.querySelector(\"#\".concat(e)).style.display = \"block\";\n    document.querySelector(\"#modal\").classList.add(\"show\");\n  } // -> Funciones\n  // Eventos\n  //Cerrar la ventana al hacer click afuera\n\n};\ndocument.addEventListener(\"click\", function (e) {\n  var _this = e.target;\n  if (_this.classList.contains('modal-main')) modalFunctions.closeModal();\n}); // -> Eventos\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (modalFunctions);\n\n//# sourceURL=webpack:///./src/public/js/input/modal.js?");
 
 /***/ })
 
